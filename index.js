@@ -44,15 +44,14 @@ const promptMenu = () => {
 
             }
         ]).then(answer => {
-           
-
             if(answer.option === 'Engineer'){
-                
-                 return promptEngineer();
-
+                 promptEngineer()
+                 .then(engineerData => console.log('engineer: ' + JSON.stringify(engineerData)))
+                 .then(promptMenu)
             }else if(answer.option === 'Intern'){
-               return promptIntern();
-
+               promptIntern()
+               .then(internData => console.log('interData: '+ JSON.stringify(internData)))
+               .then(promptMenu)
             }else{
                 return ;
             }
@@ -83,7 +82,7 @@ const promptEngineer = () => {
                 message: "What is the engineer's github username?"
             }
         ])
-        .then(promptMenu)
+       
 }
 
 
@@ -111,11 +110,16 @@ const promptIntern = () => {
                 message: "What is the name of the school the intern go to?"
             }
         ])
-        .then(promptMenu)
+       
 }
 
 
 
 teamManagerQuestions()
+    .then(mg => {
+        const aa = JSON.stringify(mg)
+        console.log('aa ' + aa)
+    })
     .then(promptMenu)
+    
     
