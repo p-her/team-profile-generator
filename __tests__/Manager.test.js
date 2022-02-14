@@ -21,7 +21,7 @@ test("get the manager's role", () => {
 })
 
 test("get manager's name", () => {
-    const manager = new Manager('John', 2);
+    const manager = new Manager('Ashe', 2);
 
     expect(manager.getName()).toEqual(expect.stringContaining('Ashe'));
 })
